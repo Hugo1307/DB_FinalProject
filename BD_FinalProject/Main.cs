@@ -14,9 +14,9 @@ namespace BD_FinalProject
     public partial class Main : Form
     {
 
-        SqlConnection sqlConn;
+        private static Main instance;
         
-        public Main()
+        private Main()
         {
             InitializeComponent();
         }
@@ -26,21 +26,29 @@ namespace BD_FinalProject
             Lb_UserName.Text = Properties.Settings.Default.UserName;
         }
 
-        private void getAllUsers()
+        private void Lb_UserName_Click(object sender, EventArgs e)
         {
 
-            this.sqlConn.Open();
+        }
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Wellet.[User]", this.sqlConn);
-            SqlDataReader reader = cmd.ExecuteReader();
+        private void dashboard1_Load(object sender, EventArgs e)
+        {
 
-            while (reader.Read())
-            {
-                MessageBox.Show(reader["Email"].ToString());
-            }
+        }
 
-            sqlConn.Close();
+        private void Btn_Sidebar_Dashboard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            dashboard.Parent = P_MainRouting;
+            dashboard.Location = new Point(0,0);
+            dashboard.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            dashboard.BringToFront();
+        }
 
+        public static Main getInstance()
+        {
+            if (instance == null) instance = new Main();
+            return instance;
         }
 
     }

@@ -34,7 +34,7 @@ namespace BD_FinalProject
                 new SqlParameter("@Email", userEmail),
                 new SqlParameter("@Password", userPassword),
                 new SqlParameter("@Authorized", SqlDbType.Bit),
-                new SqlParameter("@UserName", SqlDbType.VarChar)
+                new SqlParameter("@UserName", SqlDbType.VarChar, 256)
             };
 
             sqlParameters[2].Direction = ParameterDirection.Output;
@@ -50,12 +50,13 @@ namespace BD_FinalProject
                 if (loginSuccessfull)
                 {
                     string userName = Convert.ToString(resultParams["@UserName"].Value);
-
+                    
                     Timer_Result.Start();
                     Lb_LoginResult.Visible = true;
                     Lb_LoginResult.Text = "Welcome, " + userName + "!";
 
-                    //Properties.Settings.Default.UserName = userName;
+                    Properties.Settings.Default["UserName"] = userName;
+                    Properties.Settings.Default.Save();
 
                 }
                 else
@@ -79,7 +80,7 @@ namespace BD_FinalProject
             if (loginSuccessfull)
             {
                 this.Hide();
-                Main main = new Main();
+                Main main = Main.getInstance();
                 main.Closed += (s, args) => this.Close();
                 main.Show();
             }
