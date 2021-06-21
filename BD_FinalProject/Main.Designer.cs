@@ -57,8 +57,6 @@ namespace BD_FinalProject
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel1.Controls.Add(this.Btn_Sidebar_Dashboard);
             this.panel1.Controls.Add(this.button6);
@@ -68,9 +66,10 @@ namespace BD_FinalProject
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 769);
+            this.panel1.Size = new System.Drawing.Size(100, 768);
             this.panel1.TabIndex = 0;
             // 
             // Btn_Sidebar_Dashboard
@@ -203,17 +202,15 @@ namespace BD_FinalProject
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(209)))), ((int)(((byte)(133)))));
             this.panel2.Controls.Add(this.Lb_UserName);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(95, 0);
+            this.panel2.Location = new System.Drawing.Point(99, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1272, 100);
+            this.panel2.Size = new System.Drawing.Size(1268, 100);
             this.panel2.TabIndex = 1;
             // 
             // Lb_UserName
@@ -234,7 +231,7 @@ namespace BD_FinalProject
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(1120, 31);
+            this.pictureBox3.Location = new System.Drawing.Point(1116, 31);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.TabIndex = 4;
@@ -246,7 +243,7 @@ namespace BD_FinalProject
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Oswald", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(863, 38);
+            this.textBox1.Location = new System.Drawing.Point(859, 38);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(238, 29);
             this.textBox1.TabIndex = 3;
@@ -257,7 +254,7 @@ namespace BD_FinalProject
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.ImageLocation = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHx" +
     "waG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80";
-            this.pictureBox2.Location = new System.Drawing.Point(1196, 23);
+            this.pictureBox2.Location = new System.Drawing.Point(1192, 23);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(52, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -293,6 +290,7 @@ namespace BD_FinalProject
             this.dashboard1.Name = "dashboard1";
             this.dashboard1.Size = new System.Drawing.Size(1268, 669);
             this.dashboard1.TabIndex = 0;
+            this.dashboard1.Load += new System.EventHandler(this.dashboard1_Load_1);
             // 
             // Main
             // 
@@ -301,8 +299,8 @@ namespace BD_FinalProject
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.P_MainRouting);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BD_FinalProject.Utils;
 
 namespace BD_FinalProject
 {
@@ -15,7 +16,7 @@ namespace BD_FinalProject
     {
 
         private static Main instance;
-        
+
         private Main()
         {
             InitializeComponent();
@@ -51,5 +52,9 @@ namespace BD_FinalProject
             return instance;
         }
 
+        private void dashboard1_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

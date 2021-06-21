@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD_FinalProject.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,24 +11,54 @@ using System.Windows.Forms;
 
 namespace BD_FinalProject
 {
-    public partial class Dashboard : UserControl
+    public partial class Dashboard : UserControl, Route
     {
         public Dashboard()
         {
             InitializeComponent();
+
         }
 
         private void Pb_AddTransaction_Click(object sender, EventArgs e)
         {
-            Main mainForm = Main.getInstance();
-            Panel routingPanel = (Panel) mainForm.Controls["P_MainRouting"];
+            RouteHandler routeHandler = RouteHandler.getInstance();
+            routeHandler.showRoute(new AddTransaction());
+        }
 
-            AddTransaction addTransaction = new AddTransaction();
-            addTransaction.Parent = routingPanel;
-            addTransaction.Location = new Point(0, 0);
-            addTransaction.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            addTransaction.BringToFront();
+        public RouteName getName()
+        {
+            return RouteName.DASHBOARD;
+        }
+
+        public UserControl getNewInstance()
+        {
+            return new Dashboard();
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+            DataCache dataCache = DataCache.getInstance();
+            string userEmail = Properties.Settings.Default.UserEmail;
+
+            if (dataCache.AllUserWorkspaces == null)
+                dataCache.AllUserWorkspaces = DBCommander.getInstance().getUserWorkspaces();
+
+            foreach (Workspace workspace in dataCache.AllUserWorkspaces)
+            {
+                bool isUserAdmin = workspace.isAdmin(userEmail);
+                if (isUserAdmin)
+                    Lbx_AllWorkspaces.Items.Add(workspace.Name + " (Admin)");
+                else
+                    Lbx_AllWorkspaces.Items.Add(workspace.Name);
+            }
 
         }
+
+        private void Lbx_AllWorkspaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int workspaceSelectedIdx = Lbx_AllWorkspaces.SelectedIndex;
+        }
     }
+
 }

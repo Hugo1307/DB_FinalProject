@@ -56,6 +56,7 @@ namespace BD_FinalProject
                     Lb_LoginResult.Text = "Welcome, " + userName + "!";
 
                     Properties.Settings.Default["UserName"] = userName;
+                    Properties.Settings.Default["UserEmail"] = userEmail;
                     Properties.Settings.Default.Save();
 
                 }
