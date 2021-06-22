@@ -57,7 +57,16 @@ namespace BD_FinalProject
 
         private void Lbx_AllWorkspaces_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            DataCache dataCache = DataCache.getInstance();
+            RouteHandler routeHandler = RouteHandler.getInstance();
+
             int workspaceSelectedIdx = Lbx_AllWorkspaces.SelectedIndex;
+
+            Workspace selectedWorkspace = dataCache.AllUserWorkspaces.ElementAt(workspaceSelectedIdx);
+
+            routeHandler.showRoute(new WorkspaceDetails(selectedWorkspace.Id));
+            
         }
     }
 

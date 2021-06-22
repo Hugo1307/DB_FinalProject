@@ -37,7 +37,7 @@ namespace BD_FinalProject
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_Sidebar_Users = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Lb_UserName = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@ namespace BD_FinalProject
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.Btn_Sidebar_Users);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -175,22 +175,23 @@ namespace BD_FinalProject
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // Btn_Sidebar_Users
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 185);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 46);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Users.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Users.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Sidebar_Users.BackgroundImage")));
+            this.Btn_Sidebar_Users.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Sidebar_Users.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Btn_Sidebar_Users.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Users.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sidebar_Users.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Sidebar_Users.ForeColor = System.Drawing.Color.White;
+            this.Btn_Sidebar_Users.Location = new System.Drawing.Point(0, 185);
+            this.Btn_Sidebar_Users.Name = "Btn_Sidebar_Users";
+            this.Btn_Sidebar_Users.Size = new System.Drawing.Size(100, 46);
+            this.Btn_Sidebar_Users.TabIndex = 1;
+            this.Btn_Sidebar_Users.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Users.Click += new System.EventHandler(this.Btn_Sidebar_Users_Click);
             // 
             // pictureBox1
             // 
@@ -220,7 +221,7 @@ namespace BD_FinalProject
             this.Lb_UserName.ForeColor = System.Drawing.Color.White;
             this.Lb_UserName.Location = new System.Drawing.Point(30, 23);
             this.Lb_UserName.Name = "Lb_UserName";
-            this.Lb_UserName.Size = new System.Drawing.Size(118, 24);
+            this.Lb_UserName.Size = new System.Drawing.Size(114, 27);
             this.Lb_UserName.TabIndex = 0;
             this.Lb_UserName.Text = "Hugo Gonçalves\'s";
             this.Lb_UserName.Click += new System.EventHandler(this.Lb_UserName_Click);
@@ -268,7 +269,7 @@ namespace BD_FinalProject
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(27, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 36);
+            this.label1.Size = new System.Drawing.Size(111, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Dashboard";
             // 
@@ -321,7 +322,7 @@ namespace BD_FinalProject
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_Sidebar_Users;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Lb_UserName;

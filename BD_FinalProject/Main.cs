@@ -56,5 +56,11 @@ namespace BD_FinalProject
         {
 
         }
+
+        private void Btn_Sidebar_Users_Click(object sender, EventArgs e)
+        {
+            RouteHandler routeHandler = RouteHandler.getInstance();
+            routeHandler.showRoute(new Users());
+        }
     }
 }

@@ -9,6 +9,9 @@ namespace BD_FinalProject
     public enum RouteName
     {
         DASHBOARD,
-        ADD_TRANSACTION
+        ADD_TRANSACTION,
+        WORKSPACE_DETAILS,
+        USERS,
+        ADD_USER
     }
 }
