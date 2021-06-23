@@ -17,12 +17,14 @@ namespace BD_FinalProject
         private int userCardsCount;
         private List<User> allUsersInWorkspace;
         private List<Workspace> allUserWorkspaces;
-        private Workspace selectedWorkspace;
+        private int selectedWorkspaceIdx;
+        private List<UserPanel> allUserCards;
 
         public Users()
         {
             InitializeComponent();
             this.userCardsCount = 0;
+            this.allUserCards = new List<UserPanel>();
         }
 
         private void addUserCard(User user)
@@ -35,6 +37,21 @@ namespace BD_FinalProject
             userPanel.Location = cardLocation;
             userPanel.BringToFront();
 
+            allUserCards.Add(userPanel);
+
+        }
+
+        private void updateUsers()
+        {
+            DBCommander dBCommander = DBCommander.getInstance();
+
+            foreach (UserPanel userPanel in allUserCards) userPanel.Dispose();
+
+            userCardsCount = 0;
+            allUsersInWorkspace = dBCommander.getWorkspaceUsers(allUserWorkspaces.ElementAt(selectedWorkspaceIdx).Id);
+
+            foreach (User user in allUsersInWorkspace) addUserCard(user);
+
         }
 
         private void Users_Load(object sender, EventArgs e)
@@ -43,20 +60,13 @@ namespace BD_FinalProject
             DBCommander dBCommander = DBCommander.getInstance();
             allUserWorkspaces = dBCommander.getUserWorkspaces();
 
-            foreach (Workspace workspace in allUserWorkspaces)
-            {
-                Cb_WorkspaceSelection.Items.Add(workspace.Name);
-            }
+            foreach (Workspace workspace in allUserWorkspaces) Cb_WorkspaceSelection.Items.Add(workspace.Name);
 
-            Cb_WorkspaceSelection.SelectedIndex = 0;
+            selectedWorkspaceIdx = 0;
 
-            selectedWorkspace = allUserWorkspaces.ElementAt(Cb_WorkspaceSelection.SelectedIndex);
-            allUsersInWorkspace = dBCommander.getWorkspaceUsers(selectedWorkspace.Id);
+            Cb_WorkspaceSelection.SelectedIndex = selectedWorkspaceIdx;
 
-            foreach (User user in allUsersInWorkspace)
-            {
-                addUserCard(user);
-            }
+            updateUsers();
 
         }
 
@@ -75,6 +85,13 @@ namespace BD_FinalProject
             RouteHandler routeHandler = RouteHandler.getInstance();
             routeHandler.showRoute(new AddUser());
         }
+
+        private void Cb_WorkspaceSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedWorkspaceIdx = Cb_WorkspaceSelection.SelectedIndex;
+            updateUsers();
+        }
+
     }
 
 }

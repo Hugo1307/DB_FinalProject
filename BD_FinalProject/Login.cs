@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BD_FinalProject.Utils;
 
 namespace BD_FinalProject
 {
@@ -47,8 +48,10 @@ namespace BD_FinalProject
             if (resultParams != null)
             {
                 loginSuccessfull = Convert.ToBoolean(resultParams["@Authorized"].Value);
+
                 if (loginSuccessfull)
                 {
+
                     string userName = Convert.ToString(resultParams["@UserName"].Value);
                     
                     Timer_Result.Start();
@@ -58,6 +61,11 @@ namespace BD_FinalProject
                     Properties.Settings.Default["UserName"] = userName;
                     Properties.Settings.Default["UserEmail"] = userEmail;
                     Properties.Settings.Default.Save();
+
+                    DataCache dataCache = DataCache.getInstance();
+                    DBCommander dBCommander = DBCommander.getInstance();
+
+                    dataCache.CurrentUser = dBCommander.getUserByEmail(userEmail);
 
                 }
                 else

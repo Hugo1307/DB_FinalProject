@@ -22,7 +22,7 @@ namespace BD_FinalProject
         private void Pb_AddTransaction_Click(object sender, EventArgs e)
         {
             RouteHandler routeHandler = RouteHandler.getInstance();
-            routeHandler.showRoute(new AddTransaction());
+            routeHandler.showRoute(new AddIncome());
         }
 
         public RouteName getName()
@@ -37,16 +37,21 @@ namespace BD_FinalProject
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
             DataCache dataCache = DataCache.getInstance();
-            string userEmail = Properties.Settings.Default.UserEmail;
+            refreshWorkspaces();
+            dataCache.CurrentWorkspace = dataCache.AllUserWorkspaces.ElementAtOrDefault(0);
+        }
 
-            if (dataCache.AllUserWorkspaces == null)
-                dataCache.AllUserWorkspaces = DBCommander.getInstance().getUserWorkspaces();
+        private void refreshWorkspaces()
+        {
+            DataCache dataCache = DataCache.getInstance();
+            dataCache.AllUserWorkspaces = DBCommander.getInstance().getUserWorkspaces();
+
+            Lbx_AllWorkspaces.Items.Clear();
 
             foreach (Workspace workspace in dataCache.AllUserWorkspaces)
             {
-                bool isUserAdmin = workspace.isAdmin(userEmail);
+                bool isUserAdmin = workspace.isAdmin(dataCache.CurrentUser.Email);
                 if (isUserAdmin)
                     Lbx_AllWorkspaces.Items.Add(workspace.Name + " (Admin)");
                 else
@@ -67,6 +72,21 @@ namespace BD_FinalProject
 
             routeHandler.showRoute(new WorkspaceDetails(selectedWorkspace.Id));
             
+        }
+
+        private void Pb_AddWorkspace_Click(object sender, EventArgs e)
+        {
+            new CreateWorkspacePopup().Show();
+        }
+
+        private void Pb_RefreshWorkspaces_Click(object sender, EventArgs e)
+        {
+            refreshWorkspaces();
+        }
+
+        private void Pb_CheckHistory_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new History());
         }
     }
 

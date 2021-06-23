@@ -46,12 +46,22 @@ public class DBManager
 		return currentConnection.State == ConnectionState.Open;
 	}
 
-	public SqlDataReader executeQuery(String query)
+	public SqlDataReader executeQuery(String query, SqlParameter[] parameters)
 	{
 		try
 		{
 			SqlCommand cmd = new SqlCommand(query, currentConnection);
+
+			if (parameters != null)
+            {
+				foreach (SqlParameter parameter in parameters)
+				{
+					cmd.Parameters.Add(parameter);
+				}
+			}
+
 			return cmd.ExecuteReader();
+
 		}
 		catch (SqlException e)
 		{
@@ -65,7 +75,6 @@ public class DBManager
 
         try
         {
-
 			SqlCommand cmd = new SqlCommand(spName, currentConnection);
 			cmd.CommandType = CommandType.StoredProcedure;
 

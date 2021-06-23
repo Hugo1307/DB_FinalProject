@@ -14,7 +14,7 @@ namespace BD_FinalProject
     public partial class AddUser : UserControl, Route
     {
         private List<Workspace> allUserWorkspaces;
-        private Workspace selectedWorkspace;
+        private int selectedWorkspaceIdx;
         private List<User> usersObtained;
         private int selectedUserIdx;
         public AddUser()
@@ -32,8 +32,8 @@ namespace BD_FinalProject
                 Cb_WorkspaceSelection.Items.Add(workspace.Name);
             }
 
-            Cb_WorkspaceSelection.SelectedIndex = 0;
-            selectedWorkspace = allUserWorkspaces.ElementAt(Cb_WorkspaceSelection.SelectedIndex);
+            selectedWorkspaceIdx = 0;
+            Cb_WorkspaceSelection.SelectedIndex = selectedWorkspaceIdx;
 
         }
 
@@ -94,6 +94,34 @@ namespace BD_FinalProject
         public UserControl getNewInstance()
         {
             return new AddUser();
+        }
+
+        private void Btn_InviteUser_Click(object sender, EventArgs e)
+        {
+            DBCommander dBCommander = DBCommander.getInstance();
+
+            User userToAdd = usersObtained.ElementAt(selectedUserIdx);
+            Workspace workspaceAddUser = allUserWorkspaces.ElementAt(selectedWorkspaceIdx);
+
+            bool userAdded = dBCommander.addUserToWorkspace(userToAdd, workspaceAddUser);
+
+            CustomTextBox customTextBox;
+            if (userAdded)
+            {
+                customTextBox = new CustomTextBox("User added", "The user " + userToAdd.Name + " was added to workspace " + workspaceAddUser.Name + ".");
+                customTextBox.Show();
+            }
+            else
+            {
+                customTextBox = new CustomTextBox("Error Adding User", "The user " + userToAdd.Name + " could not be added to workspace " + workspaceAddUser.Name + ".");
+                customTextBox.Show();
+            }
+        
+        }
+
+        private void Cb_WorkspaceSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedWorkspaceIdx = Cb_WorkspaceSelection.SelectedIndex;
         }
 
     }

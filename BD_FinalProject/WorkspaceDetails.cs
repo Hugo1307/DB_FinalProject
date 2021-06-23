@@ -15,7 +15,7 @@ namespace BD_FinalProject
     {
 
         private int workspaceID;
-
+        private Workspace workspace;
         public int WorkspaceID { get => workspaceID; set => workspaceID = value; }
 
         public WorkspaceDetails(int workspaceID)
@@ -26,7 +26,7 @@ namespace BD_FinalProject
         private void WorkspaceDetails_Load(object sender, EventArgs e)
         {
             DBCommander dBCommander = DBCommander.getInstance();
-            Workspace workspace = dBCommander.getWorkspaceByID(this.workspaceID);
+            workspace = dBCommander.getWorkspaceByID(this.workspaceID);
             List<User> workspaceUsers = dBCommander.getWorkspaceUsers(this.workspaceID);
 
             if (workspace != null)
@@ -53,6 +53,20 @@ namespace BD_FinalProject
             return new WorkspaceDetails(1);
         }
 
-        
+        private void Btn_AddTransaction_Click(object sender, EventArgs e)
+        {
+            DBCommander dBCommander = DBCommander.getInstance();
+            bool workspaceDeleted = dBCommander.deleteWorkspace(this.workspaceID);
+
+            CustomTextBox customTextBox = new CustomTextBox("Workspace Deleted", "You have successfully deleted the workspace.");
+            customTextBox.Show();
+
+            RouteHandler.getInstance().showRoute(new Dashboard());
+        }
+
+        private void Btn_CheckoutWorkspace_Click(object sender, EventArgs e)
+        {
+            DataCache.getInstance().CurrentWorkspace = workspace; 
+        }
     }
 }

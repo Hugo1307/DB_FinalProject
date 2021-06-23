@@ -38,6 +38,7 @@ namespace BD_FinalProject
             this.Btn_AddTransaction = new System.Windows.Forms.Button();
             this.Lb_WorkspaceAdmin = new System.Windows.Forms.Label();
             this.Lb_WorkspaceCreationDate = new System.Windows.Forms.Label();
+            this.Btn_CheckoutWorkspace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -119,12 +120,13 @@ namespace BD_FinalProject
             this.Btn_AddTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_AddTransaction.Font = new System.Drawing.Font("Oswald", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Btn_AddTransaction.ForeColor = System.Drawing.Color.White;
-            this.Btn_AddTransaction.Location = new System.Drawing.Point(37, 562);
+            this.Btn_AddTransaction.Location = new System.Drawing.Point(309, 569);
             this.Btn_AddTransaction.Name = "Btn_AddTransaction";
             this.Btn_AddTransaction.Size = new System.Drawing.Size(245, 42);
             this.Btn_AddTransaction.TabIndex = 17;
             this.Btn_AddTransaction.Text = "Delete Workspace";
             this.Btn_AddTransaction.UseVisualStyleBackColor = false;
+            this.Btn_AddTransaction.Click += new System.EventHandler(this.Btn_AddTransaction_Click);
             // 
             // Lb_WorkspaceAdmin
             // 
@@ -150,11 +152,27 @@ namespace BD_FinalProject
             this.Lb_WorkspaceCreationDate.TabIndex = 19;
             this.Lb_WorkspaceCreationDate.Text = "21/06/2021";
             // 
+            // Btn_CheckoutWorkspace
+            // 
+            this.Btn_CheckoutWorkspace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(173)))), ((int)(((byte)(68)))));
+            this.Btn_CheckoutWorkspace.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(173)))), ((int)(((byte)(68)))));
+            this.Btn_CheckoutWorkspace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_CheckoutWorkspace.Font = new System.Drawing.Font("Oswald", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_CheckoutWorkspace.ForeColor = System.Drawing.Color.White;
+            this.Btn_CheckoutWorkspace.Location = new System.Drawing.Point(38, 569);
+            this.Btn_CheckoutWorkspace.Name = "Btn_CheckoutWorkspace";
+            this.Btn_CheckoutWorkspace.Size = new System.Drawing.Size(245, 42);
+            this.Btn_CheckoutWorkspace.TabIndex = 20;
+            this.Btn_CheckoutWorkspace.Text = "Set As Active";
+            this.Btn_CheckoutWorkspace.UseVisualStyleBackColor = false;
+            this.Btn_CheckoutWorkspace.Click += new System.EventHandler(this.Btn_CheckoutWorkspace_Click);
+            // 
             // WorkspaceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.Btn_CheckoutWorkspace);
             this.Controls.Add(this.Lb_WorkspaceCreationDate);
             this.Controls.Add(this.Lb_WorkspaceAdmin);
             this.Controls.Add(this.Btn_AddTransaction);
@@ -183,5 +201,6 @@ namespace BD_FinalProject
         private System.Windows.Forms.Button Btn_AddTransaction;
         private System.Windows.Forms.Label Lb_WorkspaceAdmin;
         private System.Windows.Forms.Label Lb_WorkspaceCreationDate;
+        private System.Windows.Forms.Button Btn_CheckoutWorkspace;
     }
 }

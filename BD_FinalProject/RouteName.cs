@@ -12,6 +12,7 @@ namespace BD_FinalProject
         ADD_TRANSACTION,
         WORKSPACE_DETAILS,
         USERS,
-        ADD_USER
+        ADD_USER,
+        HISTORY
     }
 }

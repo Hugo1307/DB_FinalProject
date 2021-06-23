@@ -72,6 +72,7 @@ namespace BD_FinalProject
             this.Cb_WorkspaceSelection.Name = "Cb_WorkspaceSelection";
             this.Cb_WorkspaceSelection.Size = new System.Drawing.Size(319, 40);
             this.Cb_WorkspaceSelection.TabIndex = 8;
+            this.Cb_WorkspaceSelection.SelectedIndexChanged += new System.EventHandler(this.Cb_WorkspaceSelection_SelectedIndexChanged);
             // 
             // Tb_UserSearch
             // 
@@ -148,6 +149,7 @@ namespace BD_FinalProject
             this.Btn_InviteUser.TabIndex = 18;
             this.Btn_InviteUser.Text = "Add User";
             this.Btn_InviteUser.UseVisualStyleBackColor = false;
+            this.Btn_InviteUser.Click += new System.EventHandler(this.Btn_InviteUser_Click);
             // 
             // Lb_Progress
             // 

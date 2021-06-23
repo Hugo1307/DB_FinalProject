@@ -63,10 +63,11 @@ namespace BD_FinalProject
             this.Cb_WorkspaceSelection.Font = new System.Drawing.Font("Oswald Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Cb_WorkspaceSelection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(173)))), ((int)(((byte)(68)))));
             this.Cb_WorkspaceSelection.FormattingEnabled = true;
-            this.Cb_WorkspaceSelection.Location = new System.Drawing.Point(41, 88);
+            this.Cb_WorkspaceSelection.Location = new System.Drawing.Point(41, 96);
             this.Cb_WorkspaceSelection.Name = "Cb_WorkspaceSelection";
             this.Cb_WorkspaceSelection.Size = new System.Drawing.Size(319, 40);
             this.Cb_WorkspaceSelection.TabIndex = 7;
+            this.Cb_WorkspaceSelection.SelectedIndexChanged += new System.EventHandler(this.Cb_WorkspaceSelection_SelectedIndexChanged);
             // 
             // Pb_AddUser
             // 

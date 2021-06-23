@@ -62,5 +62,10 @@ namespace BD_FinalProject
             RouteHandler routeHandler = RouteHandler.getInstance();
             routeHandler.showRoute(new Users());
         }
+
+        private void Btn_Sidebar_History_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new History());
+        }
     }
 }

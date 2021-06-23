@@ -12,8 +12,12 @@ namespace BD_FinalProject.Utils
 
         private static DataCache instance;
         private List<Workspace> allUserWorkspaces;
+        private User currentUser;
+        private Workspace currentWorkspace;
 
         public List<Workspace> AllUserWorkspaces { get => allUserWorkspaces; set => allUserWorkspaces = value; }
+        public User CurrentUser { get => currentUser; set => currentUser = value; }
+        public Workspace CurrentWorkspace { get => currentWorkspace; set => currentWorkspace = value; }
 
         private DataCache() { }
        

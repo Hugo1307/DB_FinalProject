@@ -35,7 +35,7 @@ namespace BD_FinalProject
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Btn_Sidebar_History = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Btn_Sidebar_Users = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,7 +62,7 @@ namespace BD_FinalProject
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.Btn_Sidebar_History);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.Btn_Sidebar_Users);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -141,22 +141,23 @@ namespace BD_FinalProject
             this.button4.TabIndex = 4;
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // Btn_Sidebar_History
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 329);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 46);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_History.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_History.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Sidebar_History.BackgroundImage")));
+            this.Btn_Sidebar_History.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Sidebar_History.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Btn_Sidebar_History.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_History.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_History.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sidebar_History.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Sidebar_History.ForeColor = System.Drawing.Color.White;
+            this.Btn_Sidebar_History.Location = new System.Drawing.Point(0, 329);
+            this.Btn_Sidebar_History.Name = "Btn_Sidebar_History";
+            this.Btn_Sidebar_History.Size = new System.Drawing.Size(100, 46);
+            this.Btn_Sidebar_History.TabIndex = 3;
+            this.Btn_Sidebar_History.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_History.Click += new System.EventHandler(this.Btn_Sidebar_History_Click);
             // 
             // button2
             // 
@@ -334,7 +335,7 @@ namespace BD_FinalProject
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Btn_Sidebar_History;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel P_MainRouting;
         private Dashboard dashboard1;
