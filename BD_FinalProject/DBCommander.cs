@@ -331,7 +331,64 @@ namespace BD_FinalProject
             dBManager.close();
             return true;
 
-        } 
+        }
+
+        public bool addExpense(Workspace workspace, string name, DateTime date, double value, bool visibility, string path, DateTime? paymentDate, int? entityId)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            DataCache dataCache = DataCache.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter userEmailParam = new SqlParameter("@UserEmail", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter workspaceIdParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+            SqlParameter billNameParam = new SqlParameter("@BillName", System.Data.SqlDbType.VarChar, 128);
+            SqlParameter dateParam = new SqlParameter("@Date", System.Data.SqlDbType.DateTime);
+            SqlParameter valueParam = new SqlParameter("@Value", System.Data.SqlDbType.Money);
+            SqlParameter visibilityParam = new SqlParameter("@Visibility", System.Data.SqlDbType.Bit);
+            SqlParameter pathParam = new SqlParameter("@Path", System.Data.SqlDbType.VarChar, 1024);
+            SqlParameter paymentDateParam = new SqlParameter("@PaymentDate", System.Data.SqlDbType.DateTime);
+            SqlParameter entityParam = new SqlParameter("@EntityID", System.Data.SqlDbType.Int);
+
+
+            workspaceIdParam.Value = workspace.Id;
+            userEmailParam.Value = dataCache.CurrentUser.Email;
+            billNameParam.Value = name;
+            dateParam.Value = date;
+            valueParam.Value = value;
+            visibilityParam.Value = visibility;
+            pathParam.Value = path;
+            entityParam.Value = entityId == null ? DBNull.Value : entityId;
+            paymentDateParam.Value = paymentDate == null ? DBNull.Value : paymentDate;
+
+            SqlParameter[] sqlParameters = {
+                userEmailParam,
+                workspaceIdParam,
+                billNameParam,
+                dateParam,
+                valueParam,
+                visibilityParam,
+                pathParam,
+                paymentDateParam,
+                entityParam
+            };
+
+            SqlParameterCollection sqlParameter = dBManager.executeSP("Wellet.CreateBill", sqlParameters);
+
+            if (sqlParameter == null)
+            {
+                dBManager.close();
+                return false;
+            }
+
+            dBManager.close();
+            return true;
+
+        }
 
         public List<HistoryItem> getHistory(int workspaceID, DateTime startDate, DateTime endDate)
         {
@@ -358,8 +415,6 @@ namespace BD_FinalProject
                 endDateParam
             };
 
-            MessageBox.Show("Workspace ID: " + workspaceID);
-
             SqlDataReader dataReader = dBManager.executeQuery("SELECT * FROM Wellet.GetHistory(@WorkspaceID, @StartDate, @EndDate)", sqlParameters);
 
             while (dataReader.Read())
@@ -374,7 +429,7 @@ namespace BD_FinalProject
                 string docName = dataReader["Doc_Name"].ToString();
                 double value = dataReader["Monetary_Value"].ToString() == "" ? 0 : Convert.ToDouble(dataReader["Monetary_Value"]);
                 bool visibility = dataReader["Visibility"].ToString() == "" ? false : Convert.ToBoolean(dataReader["Visibility"]);
-                string path = dataReader["Visibility"].ToString();
+                string path = dataReader["Path"].ToString();
                 
                 Utils.Action currentAction = new Utils.Action(actionID, userEmail, actionDate, actionType);
                 Document currentDocument = new Document(docID, actionID, docName, docDate, value, visibility, path, false);
@@ -387,6 +442,234 @@ namespace BD_FinalProject
             dBManager.close();
 
             return historyItems;
+
+        }
+
+        public bool addConsultAction(int documentID)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            DataCache dataCache = DataCache.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter workspaceIDParam = new SqlParameter("@Workspace_ID", System.Data.SqlDbType.Int);
+            SqlParameter userEmailParam = new SqlParameter("@User", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter documentIDParam = new SqlParameter("@Document_ID", System.Data.SqlDbType.Int);
+
+            workspaceIDParam.Value = dataCache.CurrentWorkspace.Id;
+            userEmailParam.Value = dataCache.CurrentUser.Email;
+            documentIDParam.Value = documentID;
+
+            SqlParameter[] sqlParameters = {
+                workspaceIDParam,
+                userEmailParam,
+                documentIDParam
+            };
+
+            SqlParameterCollection parameterCollection = dBManager.executeSP("Wellet.AddConsultAction", sqlParameters);
+
+            dBManager.close();
+
+            if (parameterCollection == null) return false;
+            return true;
+
+        }
+
+        public List<BillEntity> getBillEntities(string billCategory)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            List<BillEntity> billEntities = new List<BillEntity>();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter billCategoryParam = new SqlParameter("@BillCategory", System.Data.SqlDbType.VarChar, 256);
+
+            billCategoryParam.Value = billCategory;
+
+            SqlParameter[] sqlParameters = {
+                billCategoryParam
+            };
+
+            SqlDataReader dataReader;
+
+            if (billCategory != null)
+            {
+                dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Entity WHERE Category=@BillCategory", sqlParameters);
+            }
+            else
+            {
+                dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Entity", null);
+            }
+
+            while (dataReader.Read())
+            {
+                int entityId = Convert.ToInt32(dataReader["ID"]);
+                string category = dataReader["Category"].ToString();
+                string entityName = dataReader["Name"].ToString();
+                string entityAddress = dataReader["Address"].ToString();
+                string entityEmail = dataReader["Email"].ToString();
+
+                billEntities.Add(new BillEntity(entityId, category, entityName, entityAddress, entityEmail));
+
+            }
+
+            dBManager.close();
+            return billEntities;
+
+        }
+
+        public List<string> getBillCategories()
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            List<string> billCategories = new List<string>();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlDataReader dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Bill_Category", null);
+
+            while (dataReader.Read())
+            {
+                string category = dataReader["Name"].ToString();
+                billCategories.Add(category);
+            }
+
+            dBManager.close();
+            return billCategories;
+
+        }
+
+        public bool removeUserFromWorkspace(string userRemoving, string userToRemove, int workspaceID)
+        {
+            
+            DBManager dBManager = DBManager.getInstance();
+            List<string> billCategories = new List<string>();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter userRemovingParam = new SqlParameter("@UserRemoving", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter userToRemoveParam = new SqlParameter("@UserToRemove", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter workspaceIDParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+
+            userRemovingParam.Value = userRemoving;
+            userToRemoveParam.Value = userToRemove;
+            workspaceIDParam.Value = workspaceID;
+
+            SqlParameter[] sqlParameters = {
+                userRemovingParam,
+                userToRemoveParam,
+                workspaceIDParam
+            };
+
+            SqlParameterCollection parameterCollection = dBManager.executeSP("Wellet.DeleteUserFromWorkspace", sqlParameters);
+            dBManager.close();
+
+            return parameterCollection != null;
+
+        }
+
+        public List<Goal> getGoals(Workspace workspace)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            List<Goal> workspaceGoals = new List<Goal>();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter workspaceIDParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+
+            workspaceIDParam.Value = workspace.Id;
+
+            SqlParameter[] sqlParameters = {
+                workspaceIDParam
+            };
+
+            SqlDataReader dataReader= dBManager.executeQuery("SELECT * FROM Wellet.Goal WHERE Workspace_ID=@WorkspaceID", sqlParameters);
+            
+            while (dataReader.Read())
+            {
+
+                int goalId = Convert.ToInt32(dataReader["ID"]);
+                string goalName = dataReader["Name"].ToString();
+                string goalDescription = dataReader["Description"].ToString();
+                double currentGoalValue = Convert.ToDouble(dataReader["Current_Value"]);
+                double goalValue = Convert.ToDouble(dataReader["Goal_Value"]);
+                string goalImage = dataReader["Image_Path"].ToString();
+                int workspaceId = Convert.ToInt32(dataReader["Workspace_ID"]);
+                string userEmail = dataReader["User"].ToString();
+
+                workspaceGoals.Add(new Goal(goalId, goalName, goalImage, goalDescription, currentGoalValue, goalValue, userEmail, workspaceId));
+
+            }
+            
+            dBManager.close();
+
+            return workspaceGoals;
+
+        }
+
+        public bool addGoal(Workspace workspace, string goalName, string goalDescription, DateTime goalDeadline, double currentValue, double goalValue, string imagePath)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            DataCache dataCache = DataCache.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter workspaceIDParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+            SqlParameter userEmailParam = new SqlParameter("@UserEmail", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter goalNameParam = new SqlParameter("@GoalName", System.Data.SqlDbType.VarChar, 128);
+            SqlParameter goalDeadlineParam = new SqlParameter("@GoalDeadline", System.Data.SqlDbType.DateTime);
+            SqlParameter goalDescriptionParam = new SqlParameter("@GoalDescription", System.Data.SqlDbType.VarChar, 512);
+            SqlParameter currentValueParam = new SqlParameter("@CurrentValue", System.Data.SqlDbType.Money);
+            SqlParameter goalValueParam = new SqlParameter("@GoalValue", System.Data.SqlDbType.Money);
+            SqlParameter imagePathParam = new SqlParameter("@GoalImage", System.Data.SqlDbType.VarChar, 256);
+
+            workspaceIDParam.Value = workspace.Id;
+            userEmailParam.Value = dataCache.CurrentUser.Email;
+            goalNameParam.Value = goalName;
+            goalDeadlineParam.Value = goalDeadline;
+            goalDescriptionParam.Value = goalDescription;
+            currentValueParam.Value = currentValue;
+            goalValueParam.Value = goalValue;
+            imagePathParam.Value = imagePath;
+
+            SqlParameter[] sqlParameters = {
+                workspaceIDParam,
+                userEmailParam,
+                goalNameParam,
+                goalDeadlineParam,
+                goalDescriptionParam,
+                currentValueParam,
+                goalValueParam,
+                imagePathParam
+            };
+
+            SqlDataReader dataReader = dBManager.executeQuery("INSERT INTO Wellet.Goal VALUES (@GoalName, @GoalDescription, @GoalDeadline, @CurrentValue, @GoalValue, @GoalImage, @UserEmail, @WorkspaceID)", sqlParameters);
+
+            dBManager.close();
+
+            return dataReader != null;
 
         }
 

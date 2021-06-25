@@ -38,8 +38,15 @@ namespace BD_FinalProject
         private void Dashboard_Load(object sender, EventArgs e)
         {
             DataCache dataCache = DataCache.getInstance();
+            
             refreshWorkspaces();
-            dataCache.CurrentWorkspace = dataCache.AllUserWorkspaces.ElementAtOrDefault(0);
+            
+            if (dataCache.CurrentWorkspace == null)
+            {
+                dataCache.CurrentWorkspace = dataCache.AllUserWorkspaces.ElementAtOrDefault(0);
+                Main.getInstance().updateWorkspaceIndicator();
+            }
+           
         }
 
         private void refreshWorkspaces()
@@ -87,6 +94,16 @@ namespace BD_FinalProject
         private void Pb_CheckHistory_Click(object sender, EventArgs e)
         {
             RouteHandler.getInstance().showRoute(new History());
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pb_AddExpense_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new AddExpense());
         }
     }
 

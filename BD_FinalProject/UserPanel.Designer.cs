@@ -81,6 +81,7 @@ namespace BD_FinalProject
             this.Pb_DeleteUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pb_DeleteUser.TabIndex = 7;
             this.Pb_DeleteUser.TabStop = false;
+            this.Pb_DeleteUser.Click += new System.EventHandler(this.Pb_DeleteUser_Click);
             // 
             // UserPanel
             // 

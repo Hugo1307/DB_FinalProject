@@ -16,7 +16,7 @@ namespace BD_FinalProject.Utils
 
     public static class ActionTypeMethods
     {
-        public static ActionType convert(String typeStr)
+        public static ActionType convert(string typeStr)
         {
             foreach (ActionType actionType in Enum.GetValues(typeof(ActionType)))
             {

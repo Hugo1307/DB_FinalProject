@@ -9,10 +9,13 @@ namespace BD_FinalProject
     public enum RouteName
     {
         DASHBOARD,
-        ADD_TRANSACTION,
+        ADD_INCOME,
+        ADD_EXPENSE,
         WORKSPACE_DETAILS,
         USERS,
         ADD_USER,
-        HISTORY
+        HISTORY,
+        GOALS,
+        ADD_GOAL
     }
 }

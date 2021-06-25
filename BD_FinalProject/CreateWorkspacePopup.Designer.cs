@@ -63,6 +63,7 @@ namespace BD_FinalProject
             this.Pb_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pb_Close.TabIndex = 0;
             this.Pb_Close.TabStop = false;
+            this.Pb_Close.Click += new System.EventHandler(this.Pb_Close_Click);
             // 
             // panel1
             // 

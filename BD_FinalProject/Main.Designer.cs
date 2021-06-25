@@ -34,24 +34,21 @@ namespace BD_FinalProject
             this.Btn_Sidebar_Dashboard = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Btn_Sidebar_Goals = new System.Windows.Forms.Button();
             this.Btn_Sidebar_History = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Btn_Sidebar_Users = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Lb_SelectedWorkspace = new System.Windows.Forms.Label();
             this.Lb_UserName = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Pb_UserImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.P_MainRouting = new System.Windows.Forms.Panel();
             this.dashboard1 = new BD_FinalProject.Dashboard();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_UserImage)).BeginInit();
             this.P_MainRouting.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,9 +58,8 @@ namespace BD_FinalProject
             this.panel1.Controls.Add(this.Btn_Sidebar_Dashboard);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.Btn_Sidebar_Goals);
             this.panel1.Controls.Add(this.Btn_Sidebar_History);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.Btn_Sidebar_Users);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -83,7 +79,7 @@ namespace BD_FinalProject
             this.Btn_Sidebar_Dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Sidebar_Dashboard.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Btn_Sidebar_Dashboard.ForeColor = System.Drawing.Color.White;
-            this.Btn_Sidebar_Dashboard.Location = new System.Drawing.Point(0, 113);
+            this.Btn_Sidebar_Dashboard.Location = new System.Drawing.Point(0, 132);
             this.Btn_Sidebar_Dashboard.Name = "Btn_Sidebar_Dashboard";
             this.Btn_Sidebar_Dashboard.Size = new System.Drawing.Size(100, 46);
             this.Btn_Sidebar_Dashboard.TabIndex = 7;
@@ -101,7 +97,7 @@ namespace BD_FinalProject
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(0, 545);
+            this.button6.Location = new System.Drawing.Point(0, 493);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 46);
             this.button6.TabIndex = 6;
@@ -118,28 +114,29 @@ namespace BD_FinalProject
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 473);
+            this.button5.Location = new System.Drawing.Point(0, 421);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 46);
             this.button5.TabIndex = 5;
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // Btn_Sidebar_Goals
             // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 401);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 46);
-            this.button4.TabIndex = 4;
-            this.button4.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Goals.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Goals.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Sidebar_Goals.BackgroundImage")));
+            this.Btn_Sidebar_Goals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Sidebar_Goals.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Btn_Sidebar_Goals.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Goals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Goals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sidebar_Goals.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Sidebar_Goals.ForeColor = System.Drawing.Color.White;
+            this.Btn_Sidebar_Goals.Location = new System.Drawing.Point(0, 349);
+            this.Btn_Sidebar_Goals.Name = "Btn_Sidebar_Goals";
+            this.Btn_Sidebar_Goals.Size = new System.Drawing.Size(100, 46);
+            this.Btn_Sidebar_Goals.TabIndex = 4;
+            this.Btn_Sidebar_Goals.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Goals.Click += new System.EventHandler(this.Btn_Sidebar_Goals_Click);
             // 
             // Btn_Sidebar_History
             // 
@@ -152,29 +149,12 @@ namespace BD_FinalProject
             this.Btn_Sidebar_History.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Sidebar_History.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Btn_Sidebar_History.ForeColor = System.Drawing.Color.White;
-            this.Btn_Sidebar_History.Location = new System.Drawing.Point(0, 329);
+            this.Btn_Sidebar_History.Location = new System.Drawing.Point(0, 277);
             this.Btn_Sidebar_History.Name = "Btn_Sidebar_History";
             this.Btn_Sidebar_History.Size = new System.Drawing.Size(100, 46);
             this.Btn_Sidebar_History.TabIndex = 3;
             this.Btn_Sidebar_History.UseVisualStyleBackColor = false;
             this.Btn_Sidebar_History.Click += new System.EventHandler(this.Btn_Sidebar_History_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 257);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 46);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // Btn_Sidebar_Users
             // 
@@ -187,7 +167,7 @@ namespace BD_FinalProject
             this.Btn_Sidebar_Users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Sidebar_Users.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Btn_Sidebar_Users.ForeColor = System.Drawing.Color.White;
-            this.Btn_Sidebar_Users.Location = new System.Drawing.Point(0, 185);
+            this.Btn_Sidebar_Users.Location = new System.Drawing.Point(0, 204);
             this.Btn_Sidebar_Users.Name = "Btn_Sidebar_Users";
             this.Btn_Sidebar_Users.Size = new System.Drawing.Size(100, 46);
             this.Btn_Sidebar_Users.TabIndex = 1;
@@ -196,24 +176,36 @@ namespace BD_FinalProject
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(28, 22);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(5, 30);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 42);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(209)))), ((int)(((byte)(133)))));
+            this.panel2.Controls.Add(this.Lb_SelectedWorkspace);
             this.panel2.Controls.Add(this.Lb_UserName);
-            this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.Pb_UserImage);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(99, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1268, 100);
             this.panel2.TabIndex = 1;
+            // 
+            // Lb_SelectedWorkspace
+            // 
+            this.Lb_SelectedWorkspace.Font = new System.Drawing.Font("Oswald Medium", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Lb_SelectedWorkspace.ForeColor = System.Drawing.Color.White;
+            this.Lb_SelectedWorkspace.Location = new System.Drawing.Point(930, 30);
+            this.Lb_SelectedWorkspace.Name = "Lb_SelectedWorkspace";
+            this.Lb_SelectedWorkspace.Size = new System.Drawing.Size(250, 41);
+            this.Lb_SelectedWorkspace.TabIndex = 5;
+            this.Lb_SelectedWorkspace.Text = "Workspace 1";
+            this.Lb_SelectedWorkspace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Lb_UserName
             // 
@@ -227,41 +219,18 @@ namespace BD_FinalProject
             this.Lb_UserName.Text = "Hugo Gonçalves\'s";
             this.Lb_UserName.Click += new System.EventHandler(this.Lb_UserName_Click);
             // 
-            // pictureBox3
+            // Pb_UserImage
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Pb_UserImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(1116, 31);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Oswald", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(859, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 29);
-            this.textBox1.TabIndex = 3;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.ImageLocation = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHx" +
-    "waG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80";
-            this.pictureBox2.Location = new System.Drawing.Point(1192, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 52);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.Pb_UserImage.Image = ((System.Drawing.Image)(resources.GetObject("Pb_UserImage.Image")));
+            this.Pb_UserImage.ImageLocation = "";
+            this.Pb_UserImage.Location = new System.Drawing.Point(1192, 23);
+            this.Pb_UserImage.Name = "Pb_UserImage";
+            this.Pb_UserImage.Size = new System.Drawing.Size(52, 52);
+            this.Pb_UserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb_UserImage.TabIndex = 2;
+            this.Pb_UserImage.TabStop = false;
             // 
             // label1
             // 
@@ -313,8 +282,7 @@ namespace BD_FinalProject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_UserImage)).EndInit();
             this.P_MainRouting.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -327,18 +295,16 @@ namespace BD_FinalProject
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Lb_UserName;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Pb_UserImage;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Btn_Sidebar_Dashboard;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Btn_Sidebar_Goals;
         private System.Windows.Forms.Button Btn_Sidebar_History;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel P_MainRouting;
         private Dashboard dashboard1;
+        private System.Windows.Forms.Label Lb_SelectedWorkspace;
     }
 }
 

@@ -40,6 +40,10 @@ namespace BD_FinalProject
 
         }
 
+        private void Pb_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }

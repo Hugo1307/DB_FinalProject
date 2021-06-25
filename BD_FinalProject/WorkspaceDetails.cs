@@ -66,7 +66,9 @@ namespace BD_FinalProject
 
         private void Btn_CheckoutWorkspace_Click(object sender, EventArgs e)
         {
-            DataCache.getInstance().CurrentWorkspace = workspace; 
+            new CustomTextBox("Workspace checked", "You have set the workspace '" + workspace.Name + "' as the active workspace.").Show();
+            DataCache.getInstance().CurrentWorkspace = workspace;
+            Main.getInstance().updateWorkspaceIndicator();
         }
     }
 }

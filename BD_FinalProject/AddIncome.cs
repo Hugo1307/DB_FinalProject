@@ -81,7 +81,7 @@ namespace BD_FinalProject
 
         public RouteName getName()
         {
-            return RouteName.ADD_TRANSACTION;
+            return RouteName.ADD_INCOME;
         }
 
         public UserControl getNewInstance()

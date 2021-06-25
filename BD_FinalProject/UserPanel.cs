@@ -15,10 +15,11 @@ namespace BD_FinalProject
     {
 
         private User user;
+        private bool showDeleteButton;
 
         public User User { get => user; set => user = value; }
 
-        public UserPanel(User user)
+        public UserPanel(User user, bool showDeleteButton)
         {
             InitializeComponent();
             this.user = user;
@@ -34,8 +35,15 @@ namespace BD_FinalProject
                 Pb_UserPicture.Image = Image.FromFile(user.ImagePath);
             else
                 Pb_UserPicture.Image = Properties.Resources.user_icon_black;
+
+            if (!showDeleteButton) Pb_DeleteUser.Visible = false;
+
         }
 
+        private void Pb_DeleteUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

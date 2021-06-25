@@ -63,9 +63,49 @@ namespace BD_FinalProject.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap goal_icon_black_xl {
+            get {
+                object obj = ResourceManager.GetObject("goal_icon_black_xl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_icon_yellow_light {
+            get {
+                object obj = ResourceManager.GetObject("search_icon_yellow_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upload_icon_yellow_light {
+            get {
+                object obj = ResourceManager.GetObject("upload_icon_yellow_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_icon_black {
             get {
                 object obj = ResourceManager.GetObject("user_icon_black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap visibility_icon_yellow_light {
+            get {
+                object obj = ResourceManager.GetObject("visibility_icon_yellow_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

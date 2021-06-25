@@ -16,15 +16,18 @@ namespace BD_FinalProject
     {
 
         private static Main instance;
+        private DataCache dataCache;
 
         private Main()
         {
             InitializeComponent();
+            dataCache = DataCache.getInstance();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
             Lb_UserName.Text = Properties.Settings.Default.UserName;
+            Lb_SelectedWorkspace.Text = dataCache.CurrentWorkspace.Name;
         }
 
         private void Lb_UserName_Click(object sender, EventArgs e)
@@ -66,6 +69,16 @@ namespace BD_FinalProject
         private void Btn_Sidebar_History_Click(object sender, EventArgs e)
         {
             RouteHandler.getInstance().showRoute(new History());
+        }
+
+        public void updateWorkspaceIndicator()
+        {
+            Lb_SelectedWorkspace.Text = dataCache.CurrentWorkspace.Name;
+        }
+
+        private void Btn_Sidebar_Goals_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new Goals());
         }
     }
 }
