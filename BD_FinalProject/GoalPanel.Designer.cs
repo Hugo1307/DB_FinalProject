@@ -107,6 +107,7 @@ namespace BD_FinalProject
             this.Pb_ViewGoal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pb_ViewGoal.TabIndex = 11;
             this.Pb_ViewGoal.TabStop = false;
+            this.Pb_ViewGoal.Click += new System.EventHandler(this.Pb_ViewGoal_Click);
             // 
             // GoalPanel
             // 

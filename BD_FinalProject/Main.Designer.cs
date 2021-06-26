@@ -33,7 +33,7 @@ namespace BD_FinalProject
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btn_Sidebar_Dashboard = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.Btn_Sidebar_Report = new System.Windows.Forms.Button();
             this.Btn_Sidebar_Goals = new System.Windows.Forms.Button();
             this.Btn_Sidebar_History = new System.Windows.Forms.Button();
             this.Btn_Sidebar_Users = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@ namespace BD_FinalProject
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel1.Controls.Add(this.Btn_Sidebar_Dashboard);
             this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.Btn_Sidebar_Report);
             this.panel1.Controls.Add(this.Btn_Sidebar_Goals);
             this.panel1.Controls.Add(this.Btn_Sidebar_History);
             this.panel1.Controls.Add(this.Btn_Sidebar_Users);
@@ -103,22 +103,23 @@ namespace BD_FinalProject
             this.button6.TabIndex = 6;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // Btn_Sidebar_Report
             // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 421);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 46);
-            this.button5.TabIndex = 5;
-            this.button5.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Report.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Report.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Sidebar_Report.BackgroundImage")));
+            this.Btn_Sidebar_Report.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Sidebar_Report.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Btn_Sidebar_Report.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Report.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.Btn_Sidebar_Report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Sidebar_Report.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Btn_Sidebar_Report.ForeColor = System.Drawing.Color.White;
+            this.Btn_Sidebar_Report.Location = new System.Drawing.Point(0, 421);
+            this.Btn_Sidebar_Report.Name = "Btn_Sidebar_Report";
+            this.Btn_Sidebar_Report.Size = new System.Drawing.Size(100, 46);
+            this.Btn_Sidebar_Report.TabIndex = 5;
+            this.Btn_Sidebar_Report.UseVisualStyleBackColor = false;
+            this.Btn_Sidebar_Report.Click += new System.EventHandler(this.Btn_Sidebar_Report_Click);
             // 
             // Btn_Sidebar_Goals
             // 
@@ -299,7 +300,7 @@ namespace BD_FinalProject
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Btn_Sidebar_Dashboard;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button Btn_Sidebar_Report;
         private System.Windows.Forms.Button Btn_Sidebar_Goals;
         private System.Windows.Forms.Button Btn_Sidebar_History;
         private System.Windows.Forms.Panel P_MainRouting;

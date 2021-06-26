@@ -16,6 +16,8 @@ namespace BD_FinalProject
         ADD_USER,
         HISTORY,
         GOALS,
-        ADD_GOAL
+        ADD_GOAL,
+        GOAL_DETAILS,
+        REPORTS
     }
 }

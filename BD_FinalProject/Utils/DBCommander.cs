@@ -612,10 +612,11 @@ namespace BD_FinalProject
                 double currentGoalValue = Convert.ToDouble(dataReader["Current_Value"]);
                 double goalValue = Convert.ToDouble(dataReader["Goal_Value"]);
                 string goalImage = dataReader["Image_Path"].ToString();
+                DateTime goalDeadline = Convert.ToDateTime(dataReader["Deadline"]);
                 int workspaceId = Convert.ToInt32(dataReader["Workspace_ID"]);
                 string userEmail = dataReader["User"].ToString();
 
-                workspaceGoals.Add(new Goal(goalId, goalName, goalImage, goalDescription, currentGoalValue, goalValue, userEmail, workspaceId));
+                workspaceGoals.Add(new Goal(goalId, goalName, goalImage, goalDescription, goalDeadline, currentGoalValue, goalValue, userEmail, workspaceId));
 
             }
             
@@ -670,6 +671,119 @@ namespace BD_FinalProject
             dBManager.close();
 
             return dataReader != null;
+
+        }
+
+        public bool updateGoal(Goal goal)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter goalIDParam = new SqlParameter("@Id", System.Data.SqlDbType.Int);
+            SqlParameter goalDescriptionParam = new SqlParameter("@Description", System.Data.SqlDbType.VarChar, 512);
+            SqlParameter goalBalanceParam = new SqlParameter("@CurrentValue", System.Data.SqlDbType.Money);
+
+            goalIDParam.Value = goal.Id;
+            goalDescriptionParam.Value = goal.Description;
+            goalBalanceParam.Value = goal.CurrentValue;
+
+            SqlParameter[] sqlParameters = {
+                goalIDParam,
+                goalDescriptionParam,
+                goalBalanceParam
+            };
+
+            SqlDataReader dataReader = dBManager.executeQuery("UPDATE Wellet.Goal SET Description=@Description, Current_Value=@CurrentValue WHERE ID=@Id", sqlParameters);
+
+            dBManager.close();
+
+            if (dataReader.RecordsAffected == 0) return false;
+            return true;
+
+        } 
+
+        public List<Report> getWorkspaceReports(Workspace workspace)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            DataCache dataCache = DataCache.getInstance();
+            List<Report> allReports = new List<Report>();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter userEmailParam = new SqlParameter("@User", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter workspaceIDParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+
+            userEmailParam.Value = dataCache.CurrentUser.Email;
+            workspaceIDParam.Value = workspace.Id;
+
+            SqlParameter[] sqlParameters = {
+                userEmailParam,
+                workspaceIDParam
+            };
+
+            SqlDataReader dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Report WHERE [User]=@User AND Workspace_ID=@WorkspaceID", sqlParameters);
+
+            while(dataReader.Read())
+            {
+                int reportId = Convert.ToInt32(dataReader["ID"]);
+                string userEmail = dataReader["User"].ToString();
+                int workspaceId = Convert.ToInt32(dataReader["Workspace_ID"]);
+                DateTime startDate = Convert.ToDateTime(dataReader["Start_Date"]);
+                DateTime endDate = Convert.ToDateTime(dataReader["End_Time"]);
+                double totalValue = Convert.ToDouble(dataReader["Total_Monetary_Value"]);
+
+                allReports.Add(new Report(reportId, userEmail, workspaceId, startDate, endDate, totalValue));
+
+            }
+
+            dBManager.close();
+
+            return allReports;
+
+        }
+
+        public bool createReport(int workspaceId, DateTime startDate, DateTime endDate)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+            DataCache dataCache = DataCache.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter userEmailParam = new SqlParameter("@User", System.Data.SqlDbType.VarChar, 256);
+            SqlParameter workspaceIDParam = new SqlParameter("@WorkspaceID", System.Data.SqlDbType.Int);
+            SqlParameter startDateParam = new SqlParameter("@StartDate", System.Data.SqlDbType.Date);
+            SqlParameter endDateParam = new SqlParameter("@EndDate", System.Data.SqlDbType.Date);
+
+            userEmailParam.Value = dataCache.CurrentUser.Email;
+            workspaceIDParam.Value = workspaceId;
+            startDateParam.Value = startDate;
+            endDateParam.Value = endDate;
+
+            SqlParameter[] sqlParameters = {
+                userEmailParam,
+                workspaceIDParam,
+                startDateParam,
+                endDateParam
+            };
+
+            SqlParameterCollection parameterCollection = dBManager.executeSP("Wellet.CreateReport", sqlParameters);
+
+            dBManager.close();
+
+            return parameterCollection != null;
 
         }
 

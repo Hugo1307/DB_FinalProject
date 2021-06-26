@@ -80,5 +80,10 @@ namespace BD_FinalProject
         {
             RouteHandler.getInstance().showRoute(new Goals());
         }
+
+        private void Btn_Sidebar_Report_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new Reports());
+        }
     }
 }
