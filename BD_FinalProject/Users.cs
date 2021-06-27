@@ -30,7 +30,7 @@ namespace BD_FinalProject
         private void addUserCard(User user)
         {
 
-            UserPanel userPanel = new UserPanel(user, true);
+            UserPanel userPanel = new UserPanel(user, true, allUserWorkspaces.ElementAt(selectedWorkspaceIdx).Id);
             Point cardLocation = new Point((userPanel.Width+40)*userCardsCount++, 0);
 
             userPanel.Parent = P_User_Cards;

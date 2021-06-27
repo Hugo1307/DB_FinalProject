@@ -14,19 +14,32 @@ namespace BD_FinalProject
     public partial class ReportPanel : UserControl
     {
 
-        private Report report;
+        private Report currentReport;
+        private DBCommander dBCommander;
 
         public ReportPanel(Report report)
         {
             InitializeComponent();
-            this.report = report;
+            this.currentReport = report;
+            this.dBCommander = DBCommander.getInstance();
         }
 
         private void ReportPanel_Load(object sender, EventArgs e)
         {
-            Lb_ReportName.Text = "Report " + report.Id;
-            Lb_ReportDate.Text = report.StartDate.ToShortDateString() + " - " + report.EndDate.ToShortDateString();
-            Lb_TotalValue.Text = Math.Round(report.TotalValue, 2).ToString() + " €";
+            Lb_ReportName.Text = "Report " + currentReport.Id;
+            Lb_ReportDate.Text = currentReport.StartDate.ToShortDateString() + " - " + currentReport.EndDate.ToShortDateString();
+            Lb_TotalValue.Text = Math.Round(currentReport.TotalValue, 2).ToString() + " €";
+        }
+
+        private void Pb_DeleteReport_Click(object sender, EventArgs e)
+        {
+            bool reportDeleted = dBCommander.deleteReport(currentReport.Id);
+            CustomTextBox customTextBox;
+            if (reportDeleted)
+                customTextBox = new CustomTextBox("Report Deleted", "The report '" + currentReport.Id + "' was successfully deleted.");
+            else
+                customTextBox = new CustomTextBox("Error", "The report '" + currentReport.Id + "' could not be deleted.");
+            customTextBox.Show();
         }
 
     }

@@ -97,6 +97,7 @@ namespace BD_FinalProject
             this.Pb_DeleteGoal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pb_DeleteGoal.TabIndex = 10;
             this.Pb_DeleteGoal.TabStop = false;
+            this.Pb_DeleteGoal.Click += new System.EventHandler(this.Pb_DeleteGoal_Click);
             // 
             // Pb_ViewGoal
             // 

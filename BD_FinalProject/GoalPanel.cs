@@ -15,11 +15,13 @@ namespace BD_FinalProject
     {
 
         private Goal currentGoal;
+        private DBCommander dBCommander;
 
         public GoalPanel(Goal goal)
         {
             InitializeComponent();
             this.currentGoal = goal;
+            this.dBCommander = DBCommander.getInstance();
         }
 
         private void GoalPanel_Load(object sender, EventArgs e)
@@ -39,6 +41,17 @@ namespace BD_FinalProject
         private void Pb_ViewGoal_Click(object sender, EventArgs e)
         {
             RouteHandler.getInstance().showRoute(new GoalDetails(currentGoal));
+        }
+
+        private void Pb_DeleteGoal_Click(object sender, EventArgs e)
+        {
+            bool goalDeleted = dBCommander.deleteGoal(currentGoal.Id);
+            CustomTextBox customTextBox;
+            if (goalDeleted)
+                customTextBox = new CustomTextBox("Goal Deleted", "The goal '" + currentGoal.Name + "' was successfully deleted.");
+            else
+                customTextBox = new CustomTextBox("Error", "The goal '" + currentGoal.Name + "' could not be deleted.");
+            customTextBox.Show();
         }
 
     }

@@ -554,7 +554,6 @@ namespace BD_FinalProject
         {
             
             DBManager dBManager = DBManager.getInstance();
-            List<string> billCategories = new List<string>();
 
             dBManager.connect();
             if (dBManager.isOpened()) dBManager.close();
@@ -601,7 +600,7 @@ namespace BD_FinalProject
                 workspaceIDParam
             };
 
-            SqlDataReader dataReader= dBManager.executeQuery("SELECT * FROM Wellet.Goal WHERE Workspace_ID=@WorkspaceID", sqlParameters);
+            SqlDataReader dataReader= dBManager.executeQuery("SELECT * FROM Wellet.Goal WHERE Workspace_ID=@WorkspaceID AND (Deleted=0 OR Deleted IS NULL)", sqlParameters);
             
             while (dataReader.Read())
             {
@@ -730,7 +729,7 @@ namespace BD_FinalProject
                 workspaceIDParam
             };
 
-            SqlDataReader dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Report WHERE [User]=@User AND Workspace_ID=@WorkspaceID", sqlParameters);
+            SqlDataReader dataReader = dBManager.executeQuery("SELECT * FROM Wellet.Report WHERE [User]=@User AND Workspace_ID=@WorkspaceID AND (Deleted IS NULL OR Deleted=0)", sqlParameters);
 
             while(dataReader.Read())
             {
@@ -784,6 +783,60 @@ namespace BD_FinalProject
             dBManager.close();
 
             return parameterCollection != null;
+
+        }
+
+        public bool deleteGoal(int goalId)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter goalIDParam = new SqlParameter("@Id", System.Data.SqlDbType.Int);
+
+            goalIDParam.Value = goalId;
+
+            SqlParameter[] sqlParameters = {
+                goalIDParam
+            };
+
+            SqlDataReader dataReader = dBManager.executeQuery("UPDATE Wellet.Goal SET Deleted=1 WHERE ID=@Id", sqlParameters);
+
+            dBManager.close();
+
+            if (dataReader.RecordsAffected == 0) return false;
+            return true;
+
+        }
+
+        public bool deleteReport(int reportId)
+        {
+
+            DBManager dBManager = DBManager.getInstance();
+
+            dBManager.connect();
+            if (dBManager.isOpened()) dBManager.close();
+
+            dBManager.open();
+
+            SqlParameter reportIDParam = new SqlParameter("@Id", System.Data.SqlDbType.Int);
+
+            reportIDParam.Value = reportId;
+
+            SqlParameter[] sqlParameters = {
+                reportIDParam
+            };
+
+            SqlDataReader dataReader = dBManager.executeQuery("UPDATE Wellet.Report SET Deleted=1 WHERE ID=@Id", sqlParameters);
+
+            dBManager.close();
+
+            if (dataReader.RecordsAffected == 0) return false;
+            return true;
 
         }
 

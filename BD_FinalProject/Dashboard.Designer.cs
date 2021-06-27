@@ -31,6 +31,8 @@ namespace BD_FinalProject
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Pb_AddExpense = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Pb_CheckHistory = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Pb_AddTransaction = new System.Windows.Forms.PictureBox();
@@ -41,20 +43,28 @@ namespace BD_FinalProject
             this.Pb_AddWorkspace = new System.Windows.Forms.PictureBox();
             this.Lbx_AllWorkspaces = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Pb_AddExpense = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Pb_CreateGoal = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Pb_CreateReport = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_AddExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_CheckHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_AddTransaction)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_RefreshWorkspaces)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_AddWorkspace)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb_AddExpense)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_CreateGoal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_CreateReport)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(209)))), ((int)(((byte)(133)))));
+            this.panel1.Controls.Add(this.Pb_CreateReport);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.Pb_CreateGoal);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.Pb_AddExpense);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.Pb_CheckHistory);
@@ -64,13 +74,36 @@ namespace BD_FinalProject
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(51, 53);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(602, 235);
+            this.panel1.Size = new System.Drawing.Size(602, 241);
             this.panel1.TabIndex = 0;
+            // 
+            // Pb_AddExpense
+            // 
+            this.Pb_AddExpense.Image = ((System.Drawing.Image)(resources.GetObject("Pb_AddExpense.Image")));
+            this.Pb_AddExpense.Location = new System.Drawing.Point(151, 95);
+            this.Pb_AddExpense.Name = "Pb_AddExpense";
+            this.Pb_AddExpense.Size = new System.Drawing.Size(62, 62);
+            this.Pb_AddExpense.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb_AddExpense.TabIndex = 10;
+            this.Pb_AddExpense.TabStop = false;
+            this.Pb_AddExpense.Click += new System.EventHandler(this.Pb_AddExpense_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(137, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 27);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Add Expense";
             // 
             // Pb_CheckHistory
             // 
             this.Pb_CheckHistory.Image = ((System.Drawing.Image)(resources.GetObject("Pb_CheckHistory.Image")));
-            this.Pb_CheckHistory.Location = new System.Drawing.Point(306, 95);
+            this.Pb_CheckHistory.Location = new System.Drawing.Point(263, 95);
             this.Pb_CheckHistory.Name = "Pb_CheckHistory";
             this.Pb_CheckHistory.Size = new System.Drawing.Size(62, 62);
             this.Pb_CheckHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,7 +117,7 @@ namespace BD_FinalProject
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(288, 164);
+            this.label3.Location = new System.Drawing.Point(245, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 27);
             this.label3.TabIndex = 7;
@@ -94,7 +127,7 @@ namespace BD_FinalProject
             // Pb_AddTransaction
             // 
             this.Pb_AddTransaction.Image = ((System.Drawing.Image)(resources.GetObject("Pb_AddTransaction.Image")));
-            this.Pb_AddTransaction.Location = new System.Drawing.Point(52, 95);
+            this.Pb_AddTransaction.Location = new System.Drawing.Point(41, 95);
             this.Pb_AddTransaction.Name = "Pb_AddTransaction";
             this.Pb_AddTransaction.Size = new System.Drawing.Size(62, 62);
             this.Pb_AddTransaction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -108,7 +141,7 @@ namespace BD_FinalProject
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(42, 164);
+            this.label2.Location = new System.Drawing.Point(31, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 27);
             this.label2.TabIndex = 5;
@@ -186,28 +219,51 @@ namespace BD_FinalProject
             this.label4.TabIndex = 3;
             this.label4.Text = "Workspaces";
             // 
-            // Pb_AddExpense
+            // Pb_CreateGoal
             // 
-            this.Pb_AddExpense.Image = ((System.Drawing.Image)(resources.GetObject("Pb_AddExpense.Image")));
-            this.Pb_AddExpense.Location = new System.Drawing.Point(177, 95);
-            this.Pb_AddExpense.Name = "Pb_AddExpense";
-            this.Pb_AddExpense.Size = new System.Drawing.Size(62, 62);
-            this.Pb_AddExpense.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb_AddExpense.TabIndex = 10;
-            this.Pb_AddExpense.TabStop = false;
-            this.Pb_AddExpense.Click += new System.EventHandler(this.Pb_AddExpense_Click);
+            this.Pb_CreateGoal.Image = ((System.Drawing.Image)(resources.GetObject("Pb_CreateGoal.Image")));
+            this.Pb_CreateGoal.Location = new System.Drawing.Point(375, 95);
+            this.Pb_CreateGoal.Name = "Pb_CreateGoal";
+            this.Pb_CreateGoal.Size = new System.Drawing.Size(62, 62);
+            this.Pb_CreateGoal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb_CreateGoal.TabIndex = 12;
+            this.Pb_CreateGoal.TabStop = false;
+            this.Pb_CreateGoal.Click += new System.EventHandler(this.Pb_CreateGoal_Click);
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(163, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 27);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Add Expense";
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(364, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 27);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Create Goal";
+            // 
+            // Pb_CreateReport
+            // 
+            this.Pb_CreateReport.Image = ((System.Drawing.Image)(resources.GetObject("Pb_CreateReport.Image")));
+            this.Pb_CreateReport.Location = new System.Drawing.Point(486, 95);
+            this.Pb_CreateReport.Name = "Pb_CreateReport";
+            this.Pb_CreateReport.Size = new System.Drawing.Size(62, 62);
+            this.Pb_CreateReport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb_CreateReport.TabIndex = 14;
+            this.Pb_CreateReport.TabStop = false;
+            this.Pb_CreateReport.Click += new System.EventHandler(this.Pb_CreateReport_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Oswald ExtraLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(468, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 27);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Create Report";
             // 
             // Dashboard
             // 
@@ -221,13 +277,15 @@ namespace BD_FinalProject
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_AddExpense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_CheckHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_AddTransaction)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_RefreshWorkspaces)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb_AddWorkspace)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb_AddExpense)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_CreateGoal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb_CreateReport)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +305,9 @@ namespace BD_FinalProject
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox Pb_AddExpense;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox Pb_CreateReport;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox Pb_CreateGoal;
+        private System.Windows.Forms.Label label6;
     }
 }

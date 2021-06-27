@@ -105,6 +105,17 @@ namespace BD_FinalProject
         {
             RouteHandler.getInstance().showRoute(new AddExpense());
         }
+
+        private void Pb_CreateGoal_Click(object sender, EventArgs e)
+        {
+            RouteHandler.getInstance().showRoute(new AddGoal());
+        }
+
+        private void Pb_CreateReport_Click(object sender, EventArgs e)
+        {
+            new CreateReportPopup().Show();
+        }
+
     }
 
 }

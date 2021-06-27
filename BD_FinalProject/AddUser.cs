@@ -77,7 +77,7 @@ namespace BD_FinalProject
 
         private void updateUserCard()
         {
-            UserPanel userPanel = new UserPanel(usersObtained.ElementAt(selectedUserIdx), false);
+            UserPanel userPanel = new UserPanel(usersObtained.ElementAt(selectedUserIdx), false, 0);
 
             Lb_Progress.Text = selectedUserIdx+1 + "/" + usersObtained.Count;
 

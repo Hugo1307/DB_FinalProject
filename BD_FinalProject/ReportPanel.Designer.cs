@@ -48,6 +48,7 @@ namespace BD_FinalProject
             this.Pb_DeleteReport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Pb_DeleteReport.TabIndex = 11;
             this.Pb_DeleteReport.TabStop = false;
+            this.Pb_DeleteReport.Click += new System.EventHandler(this.Pb_DeleteReport_Click);
             // 
             // Lb_ReportDate
             // 
